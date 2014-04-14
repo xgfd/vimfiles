@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='C:/Users/Xin'
+let g:netrw_dirhist_2='D:/project'
+let g:netrw_dirhist_3='D:/project/lisp'
+let g:netrw_dirhist_4='D:/Users/Xin/Dropbox/Documents/THESIS/chapters'
