@@ -11,7 +11,7 @@ git submodule add https://github.com/fs111/pydoc.vim.git bundle/pydoc
 git submodule add https://github.com/vim-scripts/pep8.git bundle/pep8
 git submodule add https://github.com/alfredodeza/pytest.vim.git bundle/py.test
 git submodule add https://github.com/reinh/vim-makegreen bundle/makegreen
-git submodule add https://github.com/vim-scripts/TaskList.vim.git bundle/tasklist
+:: git submodule add https://github.com/vim-scripts/TaskList.vim.git bundle/tasklist
 git submodule add https://github.com/vim-scripts/The-NERD-tree.git bundle/nerdtree
 git submodule add https://github.com/davidhalter/jedi-vim.git bundle/jedi-vim
 git submodule add https://github.com/maksimr/vim-jsbeautify.git bundle/vim-jsbeautify
