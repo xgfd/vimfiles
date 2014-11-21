@@ -64,3 +64,9 @@
 [submodule "bundle/vim-node"]
 	path = bundle/vim-node
 	url = https://github.com/moll/vim-node.git
+[submodule "bundle/vim-mql4"]
+	path = bundle/vim-mql4
+	url = https://github.com/phaubos/vim-mql4.git
+[submodule "bundle/vim-web-indent"]
+	path = bundle/vim-web-indent
+	url = https://github.com/lukaszb/vim-web-indent.git
