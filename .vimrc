@@ -187,7 +187,7 @@ noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^
 imap <silent> <Home> <C-O><Home>
 
 "delimitMate newline
-imap <C-Return> <CR><Esc>O<Tab>
+"imap <C-Return> <CR><Esc>O<Tab>
 
 " Open multiple lines (insert empty lines) before or after current line,
 " and position cursor in the new space, with at least one blank line
@@ -207,7 +207,9 @@ endfunction
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Tern shorcuts
+map <F3> :TernDef<CR>
+map <A-r> :TernRename<CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
@@ -241,3 +243,6 @@ let g:Tex_MultipleCompileFormats='pdf'
 "Latex abbr
 abbr sp SPARQL
 abbr ld Linked Data
+
+"delimitMate settings
+let delimitMate_expand_cr = 1
