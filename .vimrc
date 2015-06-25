@@ -5,11 +5,12 @@
 "  for MS-DOS and Win32:  $VIM\_.vimrc
 "	    for OpenVMS:  sys$login:..vimrc
 
-set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
+if has("win32")
+  se nocompatible
+  source $VIMRUNTIME/vimrc_example.vim
+  source $VIMRUNTIME/mswin.vim
+  behave mswin
+endif
 "set diffexpr=MyDiff()
 "function MyDiff()
 "  let opt = '-a --binary '
@@ -37,13 +38,10 @@ behave mswin
 
 
 
-set ch=2		" Make command line two lines high
+se ch=2		" Make command line two lines high
 
-set mousehide		" Hide the mouse when typing text
+se mousehide		" Hide the mouse when typing text
 
-" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>/
 
 " Only do this for Vim version 5.0 and later.
 if version >= 500
@@ -57,7 +55,7 @@ if version >= 500
 	endif
 
 	" Switch on search pattern highlighting.
-	set hlsearch
+	se hlsearch
 
 	" For Win32 version, have "K" lookup the keyword in a help file
 	"if has("win32")
@@ -71,10 +69,10 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+    se guioptions-=T
+    se guioptions+=e
+    se t_Co=256
+    se guitablabel=%M\ %t
 endif
 
 se guifont=Inconsolata:h19
@@ -87,6 +85,7 @@ colorscheme molokai
 "se background=light
 "colorscheme solarized
 colorscheme charged-256
+
 "Indentation relevant
 se smartindent
 se autoindent
@@ -107,16 +106,35 @@ au fileType javascript call JavaScriptFold()
 "Auto save at focus lost
 au FocusLost * silent! wa
 "SPARQL syntax
-au BufNewFile,BufRead *.sparql			setf sparql
+au BufNewFile,BufRead *.sparql setf sparql
+
+"When .vimrc is edited, reload it
+au! bufwritepost .vimrc source ~/.vimrc
 
 "Auto save for every n seconds (not supported yet)
 "se as=2
+
+"JS format
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"map <c-f> :call JsBeautify()<cr>
+" or
+au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+
+"Lisp format
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Key mapping
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F4> :Errors<CR> "code syntax check, require syntastic
 
 "Set mapleader
 let mapleader = ","
@@ -124,6 +142,8 @@ let mapleader = ","
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
+
+map <F4> :Errors<CR> "code syntax check, require syntastic
 
 "Fast reloading of the .vimrc
 map <silent> <leader>ss :source ~/.vimrc<cr>
@@ -155,15 +175,19 @@ function! SwitchToBuf(filename)
 endfunction
 
 map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
-"When .vimrc is edited, reload it
-au! bufwritepost .vimrc source ~/.vimrc
 
 "nmap <silent> <F4> :w<CR> :!clisp -i %<CR>
 "nmap <silent> <leader>ct :!ctags -R<cr>
 
 "Smart Home
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+
+"insert mode map
+
 imap <silent> <Home> <C-O><Home>
+
+"delimitMate newline
+imap <C-Return> <CR><Esc>O<Tab>
 
 " Open multiple lines (insert empty lines) before or after current line,
 " and position cursor in the new space, with at least one blank line
@@ -178,6 +202,7 @@ function! OpenLines(nrlines, dir)
 		normal! 2j
 	endif
 endfunction
+
 " Mappings to open multiple lines and enter insert mode.
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
@@ -216,23 +241,3 @@ let g:Tex_MultipleCompileFormats='pdf'
 "Latex abbr
 abbr sp SPARQL
 abbr ld Linked Data
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"JS format
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <c-f> :call JsBeautify()<cr>
-" or
-au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Lisp format
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
