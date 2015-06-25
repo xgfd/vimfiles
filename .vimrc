@@ -207,6 +207,8 @@ endfunction
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
+"Gundo 
+nnoremap <F2> :GundoToggle<CR>
 "Tern shorcuts
 map <F3> :TernDef<CR>
 map <A-r> :TernRename<CR>
@@ -246,3 +248,4 @@ abbr ld Linked Data
 
 "delimitMate settings
 let delimitMate_expand_cr = 1
+
