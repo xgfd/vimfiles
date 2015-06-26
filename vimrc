@@ -211,7 +211,10 @@ nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 nnoremap <F2> :GundoToggle<CR>
 "Tern shorcuts
 map <F3> :TernDef<CR>
+"On Win
 map <A-r> :TernRename<CR>
+"On Mac
+map ® :TernRename<CR>
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
@@ -248,4 +251,3 @@ abbr ld Linked Data
 
 "delimitMate settings
 let delimitMate_expand_cr = 1
-
