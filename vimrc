@@ -143,7 +143,8 @@ let mapleader = ","
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
-map <F4> :Errors<CR> "code syntax check, require syntastic
+"code syntax check, require syntastic
+map <F4> :Errors<CR> 
 
 "Fast reloading of the .vimrc
 map <silent> <leader>ss :source ~/.vimrc<cr>
@@ -186,8 +187,6 @@ noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^
 
 imap <silent> <Home> <C-O><Home>
 
-"delimitMate newline
-"imap <C-Return> <CR><Esc>O<Tab>
 
 " Open multiple lines (insert empty lines) before or after current line,
 " and position cursor in the new space, with at least one blank line
@@ -222,6 +221,14 @@ map j gj
 map k gk
 set whichwrap+=h,l "enable going to the pre/next line using h,j
 
+"fugitive shortcuts for Git
+map <leader>gs :Gstatus<CR>
+map <leader>gd :Gdiff<CR>
+map <leader>gc :Gcommit<CR>
+map <leader>gb :Gblame<CR>
+map <leader>gl :Glog<CR>
+map <leader>gp :Git pull<CR>
+map <leader>gps :Git push<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Miscellaneous
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
