@@ -250,7 +250,11 @@ call pathogen#infect()
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf' 
 let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -interaction=nonstopmode $*' 
-let g:Tex_ViewRule_pdf='Skim'
+if has("win32")
+  let g:Tex_ViewRule_pdf='SumatraPDF -reuse-instance'
+else
+  let g:Tex_ViewRule_pdf='Skim'
+endif
 let g:Tex_MultipleCompileFormats='pdf' 
 "Latex abbr
 abbr sp SPARQL
