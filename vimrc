@@ -72,19 +72,23 @@ if has("gui_running")
     se guioptions-=T
     se guioptions+=e
     se t_Co=256
+    "set color scheme
+    colorscheme molokai
+    "se background=light
+    "colorscheme solarized
+    colorscheme charged-256
     se guitablabel=%M\ %t
+    if has("win32")
+      se guifont=Inconsolata:h19
+    else
+      se guifont=Skyhook\ Mono:h19
+    endif
 endif
 
-se guifont=Inconsolata:h19
 se number "show line number
 se linebreak "wrap lines
 se textwidth=0 "no hard wrap
 se ruler
-"set color scheme
-colorscheme molokai
-"se background=light
-"colorscheme solarized
-colorscheme charged-256
 
 "Indentation relevant
 se smartindent
