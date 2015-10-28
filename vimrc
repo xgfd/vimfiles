@@ -118,10 +118,11 @@ au! bufwritepost .vimrc source ~/.vimrc
 "Auto save for every n seconds (not supported yet)
 "se as=2
 
+"auto format
+au BufWrite * :Autoformat
+
 "JS format
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"map <c-f> :call JsBeautify()<cr>
-" or
 au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
 " for html
 au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
@@ -142,6 +143,9 @@ au Syntax * RainbowParenthesesLoadBraces
 
 "Set mapleader
 let mapleader = ","
+
+"code format
+noremap <S-f> :Autoformat<CR>
 
 "code syntax check, require syntastic
 map <F4> :Errors<CR> 
