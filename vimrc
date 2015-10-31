@@ -11,37 +11,10 @@ if has("win32")
   source $VIMRUNTIME/mswin.vim
   behave mswin
 endif
-"set diffexpr=MyDiff()
-"function MyDiff()
-"  let opt = '-a --binary '
-"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"  let arg1 = v:fname_in
-"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"  let arg2 = v:fname_new
-"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"  let arg3 = v:fname_out
-"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"  let eq = ''
-"  if $VIMRUNTIME =~ ' '
-"    if &sh =~ '\<cmd'
-"      let cmd = '""' . $VIMRUNTIME . '\diff"'
-"      let eq = '"'
-"    else
-"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"    endif
-"  else
-"    let cmd = $VIMRUNTIME . '\diff'
-"  endif
-"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-"endfunction
-
-
 
 se ch=2		" Make command line two lines high
 
 se mousehide		" Hide the mouse when typing text
-
 
 " Only do this for Vim version 5.0 and later.
 if version >= 500
@@ -92,23 +65,21 @@ se ruler
 
 "Indentation relevant
 se smartindent
-se autoindent
-se expandtab
-se tabstop=2
-se softtabstop=2
-se shiftwidth=2
+se expandtab tabstop=4 softtabstop=4 shiftwidth=4
 "se autochdir
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Auto commands
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Enable spellcheck for txt and tex files
 au filetype txt,tex setlocal spell spelllang=en_gb
+
 "Fold js on load
 au fileType javascript call JavaScriptFold()
+
 "Auto save at focus lost
 au FocusLost * silent! wa
+
 "SPARQL syntax
 au BufNewFile,BufRead *.sparql setf sparql
 
@@ -123,19 +94,16 @@ au BufWrite * :Autoformat
 
 "JS format
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-" for html
-au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-" for css or scss
-au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr> "js format
+au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr> "html format
+au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr> "css or scss format
 
-"Lisp format
+"parentheses matching
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Key mapping
@@ -152,6 +120,7 @@ map <F4> :Errors<CR>
 
 "Fast reloading of the .vimrc
 map <silent> <leader>ss :source ~/.vimrc<cr>
+
 "Fast editing of .vimrc in new tab
 function! SwitchToBuf(filename)
 	"let fullfn = substitute(a:filename, "^\\~/", $HOME . "/", "")
@@ -179,6 +148,7 @@ function! SwitchToBuf(filename)
 	endif
 endfunction
 
+"switch to vimrc
 map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
 
 "nmap <silent> <F4> :w<CR> :!clisp -i %<CR>
@@ -188,9 +158,7 @@ map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 
 "insert mode map
-
 imap <silent> <Home> <C-O><Home>
-
 
 " Open multiple lines (insert empty lines) before or after current line,
 " and position cursor in the new space, with at least one blank line
@@ -212,12 +180,16 @@ nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
 "Gundo 
 nnoremap <F2> :GundoToggle<CR>
+
 "Tern shorcuts
 map <F3> :TernDef<CR>
+
 "On Win
 map <A-r> :TernRename<CR>
+
 "On Mac
 map ® :TernRename<CR>
+
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Treat long lines as break lines (useful when moving around in them)
@@ -233,6 +205,7 @@ map <leader>gb :Gblame<CR>
 map <leader>gl :Glog<CR>
 map <leader>gp :Git pull<CR>
 map <leader>gps :Git push<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Miscellaneous
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -245,6 +218,7 @@ se nobackup
 se encoding=utf-8
 "se clipboard=unnamed
 "rv
+
 "Use pathogen
 call pathogen#infect()
 
@@ -260,6 +234,7 @@ else
   let g:Tex_ViewRule_pdf='Skim'
 endif
 let g:Tex_MultipleCompileFormats='pdf' 
+
 "Latex abbr
 abbr sp SPARQL
 abbr ld Linked Data
