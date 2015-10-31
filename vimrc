@@ -64,7 +64,7 @@ se textwidth=0 "no hard wrap
 se ruler
 
 "Indentation relevant
-se smartindent
+"se smartindent
 se expandtab tabstop=4 softtabstop=4 shiftwidth=4
 "se autochdir
 
@@ -90,7 +90,7 @@ au! bufwritepost .vimrc source ~/.vimrc
 "se as=2
 
 "auto format
-au BufWrite * :Autoformat
+"au BufWrite * :Autoformat
 
 "JS format
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,3 +241,4 @@ abbr ld Linked Data
 
 "delimitMate settings
 let delimitMate_expand_cr = 1
+
