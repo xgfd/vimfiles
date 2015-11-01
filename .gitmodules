@@ -64,9 +64,6 @@
 [submodule "bundle/vim-mql4"]
 	path = bundle/vim-mql4
 	url = https://github.com/naoki904/vim-mql4.git
-[submodule "bundle/vim-web-indent"]
-	path = bundle/vim-web-indent
-	url = https://github.com/lukaszb/vim-web-indent.git
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
