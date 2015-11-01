@@ -63,8 +63,12 @@ se linebreak "wrap lines
 se textwidth=0 "no hard wrap
 se ruler
 
+"fold
+se foldmethod=syntax
+
 "Indentation relevant
 "se smartindent
+filetype indent on
 se expandtab tabstop=4 softtabstop=4 shiftwidth=4
 "se autochdir
 
@@ -73,9 +77,6 @@ se expandtab tabstop=4 softtabstop=4 shiftwidth=4
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Enable spellcheck for txt and tex files
 au filetype txt,tex setlocal spell spelllang=en_gb
-
-"Fold js on load
-au fileType javascript call JavaScriptFold()
 
 "Auto save at focus lost
 au FocusLost * silent! wa
@@ -241,4 +242,3 @@ abbr ld Linked Data
 
 "delimitMate settings
 let delimitMate_expand_cr = 1
-
