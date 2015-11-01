@@ -93,12 +93,6 @@ au! bufwritepost .vimrc source ~/.vimrc
 "auto format
 "au BufWrite * :Autoformat
 
-"JS format
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr> "js format
-au FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr> "html format
-au FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr> "css or scss format
-
 "parentheses matching
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au VimEnter * RainbowParenthesesToggle
@@ -115,6 +109,7 @@ let mapleader = ","
 
 "code format
 noremap <S-f> :Autoformat<CR>
+noremap <C-f> :Autoformat<CR>
 
 "code syntax check, require syntastic
 map <F4> :Errors<CR> 
