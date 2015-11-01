@@ -79,3 +79,6 @@
 [submodule "bundle/yajs"]
 	path = bundle/yajs
 	url = https://github.com/othree/yajs.vim.git
+[submodule "bundle/tcomment"]
+	path = bundle/tcomment
+	url = https://github.com/tomtom/tcomment_vim.git
