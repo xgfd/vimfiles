@@ -88,3 +88,6 @@
 [submodule "bundle/rainbow"]
 	path = bundle/rainbow
 	url = https://github.com/luochen1990/rainbow.git
+[submodule "bundle/vim-rdf"]
+	path = bundle/vim-rdf
+	url = https://github.com/niklasl/vim-rdf.git
