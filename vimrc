@@ -150,6 +150,8 @@ map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
 "nmap <silent> <F4> :w<CR> :!clisp -i %<CR>
 "nmap <silent> <leader>ct :!ctags -R<cr>
 
+nmap <F8> :TagbarToggle<CR>
+
 "Smart Home
 noremap <expr> <silent> <Home> col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 
