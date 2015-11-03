@@ -174,7 +174,7 @@ nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
 
 "Gundo 
-nnoremap <F2> :GundoToggle<CR>
+nnoremap <F2> :UndotreeToggle<CR>
 
 "Tern shorcuts
 map <F3> :TernDef<CR>
