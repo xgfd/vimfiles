@@ -88,6 +88,6 @@
 [submodule "bundle/vim-rdf"]
 	path = bundle/vim-rdf
 	url = https://github.com/niklasl/vim-rdf.git
-[submodule ".\\bundle\\undotree"]
-	path = .\\bundle\\undotree
+[submodule "bundle/undotree"]
+	path = bundle/undotree
 	url = https://github.com/mbbill/undotree.git
