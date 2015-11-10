@@ -64,7 +64,7 @@ se textwidth=0 "no hard wrap
 se ruler
 
 "fold
-se foldmethod=syntax
+se foldmethod=indent
 
 "Indentation relevant
 "se smartindent
