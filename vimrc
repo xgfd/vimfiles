@@ -220,9 +220,11 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Vim-latex settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat = 'pdf' 
-let g:Tex_CompileRule_pdf='pdflatex --synctex=-1 -interaction=nonstopmode $*' 
+let g:tex_flavor='xelatex'
+let g:Tex_BibtexFlavor='biber'
+let g:Tex_DefaultTargetFormat='pdf' 
+"let g:Tex_CompileRule_pdf='pdflatex --synctex=1 -interaction=nonstopmode $*'
+let g:Tex_CompileRule_pdf='xelatex --synctex=1 --interaction=nonstopmode $*'
 if has("win32")
   let g:Tex_ViewRule_pdf='SumatraPDF -reuse-instance'
 else
