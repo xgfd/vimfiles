@@ -103,6 +103,7 @@ let g:rainbow_active = 1
 
 "Set mapleader
 let mapleader = ","
+let maplocalleader = ","
 
 "code format
 noremap <S-f> :Autoformat<CR>
@@ -217,20 +218,17 @@ se encoding=utf-8
 "Use pathogen
 call pathogen#infect()
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Vim-latex settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:tex_flavor='xelatex'
-let g:Tex_BibtexFlavor='biber'
-let g:Tex_DefaultTargetFormat='pdf' 
-"let g:Tex_CompileRule_pdf='pdflatex --synctex=1 -interaction=nonstopmode $*'
-let g:Tex_CompileRule_pdf='xelatex --synctex=1 --interaction=nonstopmode $*'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""vimtex settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("win32")
-  let g:Tex_ViewRule_pdf='SumatraPDF -reuse-instance'
+    let g:vimtex_view_general_viewer = 'SumatraPDF'
+    let g:vimtex_view_general_options = '-forward-search @tex @line @pdf'
+    let g:vimtex_view_general_options_latexmk = '-reuse-instance'
 else
-  let g:Tex_ViewRule_pdf='Skim'
+    let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
-let g:Tex_MultipleCompileFormats='pdf' 
 
 "Latex abbr
 abbr sp SPARQL
