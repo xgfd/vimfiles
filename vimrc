@@ -229,7 +229,12 @@ else
     let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
     let g:vimtex_view_general_options = '@line @pdf @tex'
 endif
-
+"ignore common warnings
+let g:vimtex_quickfix_ignored_warnings = [
+            \ 'Underfull',
+            \ 'Overfull',
+            \ 'specifier changed to',
+            \ ]
 "Latex abbr
 abbr sp SPARQL
 abbr ld Linked Data
