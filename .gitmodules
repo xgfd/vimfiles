@@ -66,7 +66,7 @@
 	url = https://github.com/marijnh/tern_for_vim.git
 [submodule "bundle/vim-easymotion"]
 	path = bundle/vim-easymotion
-	url = git@github.com:easymotion/vim-easymotion.git
+	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "bundle/vim-autoformat"]
 	path = bundle/vim-autoformat
 	url = https://github.com/Chiel92/vim-autoformat.git
